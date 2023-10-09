@@ -16,13 +16,13 @@ servers:
   - description: Bored API
     url: 'https://www.boredapi.com/api/'
 paths:
-  /api/activit:
+  /activity/:
     parameters: []
     get:
-      summary: Get User Info by User ID
+      summary: Gets a random activity
       responses:
         '200':
-          description: User Found
+          description: You can try this!
           content:
             application/json:
               schema:
@@ -37,10 +37,8 @@ paths:
                     dateOfBirth: '1997-10-31'
                     emailVerified: true
                     signUpDate: '2019-08-24'
-        '404':
-          description: User Not Found
       operationId: get-users-userId
-      description: Retrieve the information of the user with the matching user ID. hello
+      description: This retrieves a random activity to engage in.
       x-stoplight:
         id: jutso8twi81dk
       tags:
@@ -157,61 +155,38 @@ paths:
         id: swmedtaexmzb6
 components:
   schemas:
-    User:
-      title: User
+    activity:
       type: object
-      description: ''
-      examples:
-        - id: 142
-          firstName: Alice
-          lastName: Smith
-          email: alice.smith@gmail.com
-          dateOfBirth: '1997-10-31'
-          emailVerified: true
-          signUpDate: '2019-08-24'
+      x-examples:
+        Example 1:
+          activity: Learn Express.js
+          accessibility: 0.25
+          type: education
+          participants: 1
+          price: 0.1
+          link: 'https://expressjs.com/'
+          key: '3943506'
+      description: |
+        A random activity to perform
       properties:
-        id:
+        activity:
+          type: string
+          description: How possible it is to engage in such activity
+        accessibility:
+          type: number
+          description: |-
+            Type of the activity
+
+            ["education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork"]
+        type:
+          type: string
+        participants:
           type: integer
-          description: Unique identifier for the given user.
-          x-stoplight:
-            id: 2jrayouhnanqk
-        firstName:
+        price:
+          type: number
+        link:
           type: string
-          x-stoplight:
-            id: w3zr52pnpif6u
-        lastName:
+        key:
           type: string
-          x-stoplight:
-            id: vkeykx0xj7px9
-        email:
-          type: string
-          format: email
-          x-stoplight:
-            id: nflf2x07uw0lq
-        dateOfBirth:
-          type: string
-          format: date
-          example: '1997-10-31'
-          x-stoplight:
-            id: aw92ltafvoa7o
-        emailVerified:
-          type: boolean
-          description: Set to true if the user's email has been verified.
-          x-stoplight:
-            id: lksrqaj4x1a97
-        createDate:
-          type: string
-          format: date
-          description: The date that the user was created.
-          x-stoplight:
-            id: mgt4ns2usg3j8
-      required:
-        - id
-        - firstName
-        - lastName
-        - email
-        - emailVerified
-      x-stoplight:
-        id: b7xuu8mwc317f
 tags:
   - name: 'yes'
