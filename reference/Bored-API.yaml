@@ -26,7 +26,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/activity'
               examples:
                 Get User Alice Smith:
                   value:
@@ -166,27 +166,31 @@ components:
           price: 0.1
           link: 'https://expressjs.com/'
           key: '3943506'
-      description: |
-        A random activity to perform
       properties:
         activity:
           type: string
-          description: How possible it is to engage in such activity
+          description: |
+            A random activity to perform
         accessibility:
           type: number
+          description: How possible it is to engage in such activity
+        type:
+          type: string
           description: |-
             Type of the activity
 
             ["education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork"]
-        type:
-          type: string
         participants:
           type: integer
+          description: Number of participant needed for each activity
         price:
           type: number
+          description: The price range. This ranges from 0.0-1.0
         link:
           type: string
+          description: Link to the activity
         key:
           type: string
+          description: A defined key designated to each activity
 tags:
   - name: 'yes'
