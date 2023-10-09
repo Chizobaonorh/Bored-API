@@ -38,11 +38,45 @@ paths:
                     emailVerified: true
                     signUpDate: '2019-08-24'
       operationId: get-users-userId
-      description: This retrieves a random activity to engage in.
+      description: This retrieves a random activity to engage in through various keywords.
       x-stoplight:
         id: jutso8twi81dk
       tags:
         - User Enpoints
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: key
+          description: This finds an activity by its key. Every activity has a unique key allocated to it in the database. You can pull up any activity by passsing in its key as a query parameter.
+        - schema:
+            type: string
+          in: query
+          name: type
+        - schema:
+            type: string
+          in: query
+          name: accessibility
+        - schema:
+            type: string
+          in: query
+          name: price
+        - schema:
+            type: string
+          in: query
+          name: minprice
+        - schema:
+            type: string
+          in: query
+          name: maxprice
+        - schema:
+            type: string
+          in: query
+          name: minaccessibility
+        - schema:
+            type: string
+          in: query
+          name: maxaccessibility
     patch:
       summary: Update User Information
       operationId: patch-users-userId
@@ -157,7 +191,13 @@ paths:
     get:
       summary: Finds an activity by its key
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activity_1'
       operationId: get-activity
       x-stoplight:
         id: jq70i89778k42
@@ -169,6 +209,31 @@ paths:
           name: key
           description: 'Pass in the key to an activity, and this would fetch the activity.'
           required: true
+    parameters: []
+  '':
+    parameters: []
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-activity-type
+      x-stoplight:
+        id: 0vagtwqfvprqp
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: type
+  /jk:
+    parameters:
+      - required: true
+    get:
+      x-stoplight:
+        id: lwnv1xgibirka
+      parameters:
+        - schema:
+            type: string
+          in: query
 components:
   schemas:
     activity:
