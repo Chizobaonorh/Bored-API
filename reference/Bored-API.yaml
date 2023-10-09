@@ -1,0 +1,217 @@
+openapi: 3.1.0
+x-stoplight:
+  id: mqjpbn4jrbr55
+info:
+  title: Bored API
+  version: '1.0'
+  contact:
+    name: Support
+    url: 'https://www.boredapi.com/api/'
+  license:
+    url: 'https://github.com/drewthoennes/Bored-API/blob/master/license'
+    name: Bored API
+  summary: Get a truckload of activities at your fingertip to rid you of the boredom lurking in the shadows.
+  description: 'This API was solely designed to eradicate the boredom currently plaguing the world. With just a few keywords you can get a list of activities with price range that you can afford to add some spice to your life. So if you have wondering what you could possibly do for the summer, this is the right place to get your summer preparations started.'
+servers:
+  - description: Bored API
+    url: 'https://www.boredapi.com/api/'
+paths:
+  /api/activit:
+    parameters: []
+    get:
+      summary: Get User Info by User ID
+      responses:
+        '200':
+          description: User Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                Get User Alice Smith:
+                  value:
+                    id: 142
+                    firstName: Alice
+                    lastName: Smith
+                    email: alice.smith@gmail.com
+                    dateOfBirth: '1997-10-31'
+                    emailVerified: true
+                    signUpDate: '2019-08-24'
+        '404':
+          description: User Not Found
+      operationId: get-users-userId
+      description: Retrieve the information of the user with the matching user ID. hello
+      x-stoplight:
+        id: jutso8twi81dk
+      tags:
+        - User Enpoints
+    patch:
+      summary: Update User Information
+      operationId: patch-users-userId
+      responses:
+        '200':
+          description: User Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                Updated User Rebecca Baker:
+                  value:
+                    id: 13
+                    firstName: Rebecca
+                    lastName: Baker
+                    email: rebecca@gmail.com
+                    dateOfBirth: '1985-10-02'
+                    emailVerified: false
+                    createDate: '2019-08-24'
+        '404':
+          description: User Not Found
+        '409':
+          description: Email Already Taken
+      description: Update the information of an existing user.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                email:
+                  type: string
+                  description: 'If a new email is given, the user''s email verified property will be set to false.'
+                dateOfBirth:
+                  type: string
+            examples:
+              Update First Name:
+                value:
+                  firstName: Rebecca
+              Update Email:
+                value:
+                  email: rebecca@gmail.com
+              Update Last Name & Date of Birth:
+                value:
+                  lastName: Baker
+                  dateOfBirth: '1985-10-02'
+        description: Patch user properties to update.
+      x-stoplight:
+        id: fywpsobievu4h
+  /user:
+    post:
+      summary: Create New User
+      operationId: post-user
+      responses:
+        '200':
+          description: User Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                New User Bob Fellow:
+                  value:
+                    id: 12
+                    firstName: Bob
+                    lastName: Fellow
+                    email: bob.fellow@gmail.com
+                    dateOfBirth: '1996-08-24'
+                    emailVerified: false
+                    createDate: '2020-11-18'
+        '400':
+          description: Missing Required Information
+        '409':
+          description: Email Already Taken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                email:
+                  type: string
+                dateOfBirth:
+                  type: string
+                  format: date
+              required:
+                - firstName
+                - lastName
+                - email
+                - dateOfBirth
+            examples:
+              Create User Bob Fellow:
+                value:
+                  firstName: Bob
+                  lastName: Fellow
+                  email: bob.fellow@gmail.com
+                  dateOfBirth: '1996-08-24'
+        description: Post the necessary fields for the API to create a new user.
+      description: Create a new user.
+      x-stoplight:
+        id: swmedtaexmzb6
+components:
+  schemas:
+    User:
+      title: User
+      type: object
+      description: ''
+      examples:
+        - id: 142
+          firstName: Alice
+          lastName: Smith
+          email: alice.smith@gmail.com
+          dateOfBirth: '1997-10-31'
+          emailVerified: true
+          signUpDate: '2019-08-24'
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the given user.
+          x-stoplight:
+            id: 2jrayouhnanqk
+        firstName:
+          type: string
+          x-stoplight:
+            id: w3zr52pnpif6u
+        lastName:
+          type: string
+          x-stoplight:
+            id: vkeykx0xj7px9
+        email:
+          type: string
+          format: email
+          x-stoplight:
+            id: nflf2x07uw0lq
+        dateOfBirth:
+          type: string
+          format: date
+          example: '1997-10-31'
+          x-stoplight:
+            id: aw92ltafvoa7o
+        emailVerified:
+          type: boolean
+          description: Set to true if the user's email has been verified.
+          x-stoplight:
+            id: lksrqaj4x1a97
+        createDate:
+          type: string
+          format: date
+          description: The date that the user was created.
+          x-stoplight:
+            id: mgt4ns2usg3j8
+      required:
+        - id
+        - firstName
+        - lastName
+        - email
+        - emailVerified
+      x-stoplight:
+        id: b7xuu8mwc317f
+tags:
+  - name: 'yes'
