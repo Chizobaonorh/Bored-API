@@ -58,6 +58,7 @@ paths:
             type: integer
           in: query
           name: accessibility
+          description: This shows how possible it is to engage in such activity
         - schema:
             type: integer
           in: query
@@ -72,14 +73,17 @@ paths:
             type: integer
           in: query
           name: maxprice
+          description: Sets a range for list of activities to show. Works hand in hand with minprice.
         - schema:
             type: integer
           in: query
           name: minaccessibility
+          description: 'Returns a list with a set range of how possible it is to engage in such activity, works hand in hand with minaccessibility'
         - schema:
             type: number
           in: query
           name: maxaccessibility
+          description: 'Returns a list with a set range of how possible it is to engage in such activity, works hand in hand maxaccessibility'
     patch:
       summary: Update User Information
       operationId: patch-users-userId
