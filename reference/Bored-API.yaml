@@ -153,6 +153,22 @@ paths:
       description: Create a new user.
       x-stoplight:
         id: swmedtaexmzb6
+  /activity:
+    get:
+      summary: Finds an activity by its key
+      tags: []
+      responses: {}
+      operationId: get-activity
+      x-stoplight:
+        id: jq70i89778k42
+      description: This finds an activity by its key. Every activity has a unique key allocated to it in the database. You can pull up any activity by passsing in its key as a query parameter.
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: key
+          description: 'Pass in the key to an activity, and this would fetch the activity.'
+          required: true
 components:
   schemas:
     activity:
@@ -192,5 +208,36 @@ components:
         key:
           type: string
           description: A defined key designated to each activity
+    activity_1:
+      type: object
+      properties:
+        activity:
+          type: string
+        accessibility:
+          type: number
+        type:
+          type: string
+        participants:
+          type: integer
+        price:
+          type: number
+        key:
+          type: string
+      x-examples:
+        Example 1:
+          activity: Learn a new programming language
+          accessibility: 0.25
+          type: education
+          participants: 1
+          price: 0.1
+          key: '5881028'
+      examples:
+        - activity: Learn a new programming language
+          accessibility: 0.25
+          type: education
+          participants: 1
+          price: 0.1
+          key: '5881028'
+      description: This model gives the response schema for fetching an activity with key
 tags:
   - name: 'yes'
