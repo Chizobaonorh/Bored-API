@@ -67,6 +67,7 @@ paths:
             type: integer
           in: query
           name: minprice
+          description: Sets a range for list of activities to show. Works hand in hand with maxprice.
         - schema:
             type: integer
           in: query
