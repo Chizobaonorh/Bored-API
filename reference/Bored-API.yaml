@@ -68,22 +68,22 @@ paths:
             type: integer
           in: query
           name: minprice
-          description: Sets a range for list of activities to show. Works hand in hand with maxprice.
+          description: Picks a random activity from a set range. Works hand in hand with maxprice.
         - schema:
             type: integer
           in: query
           name: maxprice
-          description: Sets a range for list of activities to show. Works hand in hand with minprice.
+          description: Picks a random activity from a set range. Works hand in hand with minprice.
         - schema:
             type: integer
           in: query
           name: minaccessibility
-          description: 'Returns a list with a set range of how possible it is to engage in such activity, works hand in hand with minaccessibility'
+          description: 'Picks a random activity with a set range of how possible it is to engage in such activity, works hand in hand with minaccessibility'
         - schema:
             type: number
           in: query
           name: maxaccessibility
-          description: 'Returns a list with a set range of how possible it is to engage in such activity, works hand in hand maxaccessibility'
+          description: 'Picks a random activity with a set range of how possible it is to engage in such activity, works hand in hand maxaccessibility'
     patch:
       summary: Update User Information
       operationId: patch-users-userId
